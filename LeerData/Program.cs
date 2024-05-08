@@ -23,7 +23,7 @@ namespace LeerData
                     var libros = db.Libro.AsNoTracking();
                     foreach (var libro in libros)
                     {
-                        Console.WriteLine(libro.Titulo);
+                        Console.WriteLine(libro.Titulo + "   "  + libro.Descripcion);
                     }
                 }
                 else
