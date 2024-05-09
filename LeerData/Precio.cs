@@ -1,0 +1,19 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace LeerData
+
+{
+    public class Precio
+    {
+        public int PrecioId{get;set;}
+
+        public decimal PrecioActual {get;set;}
+
+        public decimal Promocion {get;set;}
+
+        public int LibroId{get;set;}
+
+        public Libro? Libro {get;set;}
+
+    }
+}

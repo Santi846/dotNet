@@ -12,5 +12,7 @@ namespace LeerData
 
         public System.DateTime FechaPublicacion {get;set;}
 
+        public Precio? PrecioPromocion {get;set;}
+
     }
 }
