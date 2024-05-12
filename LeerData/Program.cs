@@ -20,10 +20,10 @@ namespace LeerData
         {
                 if (db.Libro != null)
                 {
-                    var libros = db.Libro.AsNoTracking();
+                    var libros = db.Libro.Include(x => x.PrecioPromocion).AsNoTracking();
                     foreach (var libro in libros)
-                    {
-                        Console.WriteLine(libro.Titulo + "   "  + libro.Descripcion);
+                    {   
+                        Console.WriteLine(libro.Titulo + "   "  + libro.Descripcion + "   "  + libro.PrecioPromocion?.PrecioActual);
                     }
                 }
                 else
