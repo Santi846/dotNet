@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
@@ -20,11 +21,26 @@ namespace LeerData
         {
                 if (db.Libro != null)
                 {
-                    var libros = db.Libro.Include(x => x.PrecioPromocion).AsNoTracking();
+                    // var libros = db.Libro.Include(x => x.PrecioPromocion).AsNoTracking();
+                    // foreach (var libro in libros)
+                    // {   
+                    //     Console.WriteLine(libro.Titulo + "   "  + libro.Descripcion + "   "  + libro.PrecioPromocion?.PrecioActual);
+                        
+                    // }
+                    if (db.Comentario != null)
+                    {
+                      var libros = db.Libro.Include(x => x.ComentarioLista).AsNoTracking();
                     foreach (var libro in libros)
                     {   
-                        Console.WriteLine(libro.Titulo + "   "  + libro.Descripcion + "   "  + libro.PrecioPromocion?.PrecioActual);
+                        Console.WriteLine(libro.Titulo);
+                        foreach (var comentario in libro.ComentarioLista)
+                        {
+                            Console.WriteLine(comentario.ComentarioTexto);
+                        }
+                        
+                    }  
                     }
+                    
                 }
                 else
                 {

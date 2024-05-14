@@ -14,8 +14,12 @@ namespace LeerData
             optionsBuilder.UseSqlServer(connectionString);
         }
 
+
+        // Entity creation
         public DbSet<Libro>? Libro {get;set;}
 
         public DbSet<Precio>? Precio {get;set;}
+
+        public DbSet<Comentario>? Comentario {get;set;}
     }
 }
