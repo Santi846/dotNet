@@ -8,7 +8,8 @@ namespace LeerData
     class Program
     {
         static void Main(string[] args)
-        {
+        {   
+            // Session instance
            using(var db = new AppVentaLibrosContext())
         //    {
         //     var libros = db.Libro.AsNoTracking();
@@ -47,18 +48,43 @@ namespace LeerData
                         
                     // }  
                     // }
+                
 
-                    var libros = db.Libro.Include(x => x.AutorLink).ThenInclude(xi => xi.Autor);
+                // Get Book + related author
+
+                    // var libros = db.Libro.Include(x => x.AutorLink).ThenInclude(xi => xi.Autor);
                     
-                    foreach (var libro in libros)
-                    {
-                        Console.WriteLine(libro.Titulo);
+                    // foreach (var libro in libros)
+                    // {
+                    //     Console.WriteLine(libro.Titulo);
                         
-                        foreach (var autLink in libro.AutorLink)
-                        {
-                            Console.WriteLine(autLink.Autor.Nombre);
-                        }
-                    }
+                    //     foreach (var autLink in libro.AutorLink)
+                    //     {
+                    //         Console.WriteLine(autLink.Autor.Nombre);
+                    //     }
+                    // }
+                
+                // Instert data for an entity
+
+                var newAuthor =  new Autor{
+                    Nombre = "Saltaro",
+                    Apellidos = "Menez",
+                    Grado = "Master"
+                };
+
+                db.Add(newAuthor);
+
+                var newAuthor2 =  new Autor{
+                    Nombre = "Julia",
+                    Apellidos = "Perez",
+                    Grado = "Master"
+                };
+
+                db.Add(newAuthor2);
+                var stateTransaction = db.SaveChanges();
+
+                Console.WriteLine("Cantidad de Transacciones: " + stateTransaction);
+
                 }
                 else
                 {
