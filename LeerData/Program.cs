@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using System.Linq;
 
 namespace LeerData
 {
@@ -66,29 +67,42 @@ namespace LeerData
                 
                 // Instert data for an entity
 
-                var newAuthor =  new Autor{
-                    Nombre = "Saltaro",
-                    Apellidos = "Menez",
-                    Grado = "Master"
-                };
+                // var newAuthor =  new Autor{
+                //     Nombre = "Saltaro",
+                //     Apellidos = "Menez",
+                //     Grado = "Master"
+                // };
 
-                db.Add(newAuthor);
+                // db.Add(newAuthor);
 
-                var newAuthor2 =  new Autor{
-                    Nombre = "Julia",
-                    Apellidos = "Perez",
-                    Grado = "Master"
-                };
+                // var newAuthor2 =  new Autor{
+                //     Nombre = "Julia",
+                //     Apellidos = "Perez",
+                //     Grado = "Master"
+                // };
 
-                db.Add(newAuthor2);
-                var stateTransaction = db.SaveChanges();
+                // db.Add(newAuthor2);
+                // var stateTransaction = db.SaveChanges();
 
-                Console.WriteLine("Cantidad de Transacciones: " + stateTransaction);
+                // Console.WriteLine("Cantidad de Transacciones: " + stateTransaction);
 
-                }
-                else
+                // }
+                // else
+                // {
+                //     Console.WriteLine("No books found in the database.");
+
+
+                // Update data for an entity instance
+
+                var autorPerson = db.Autor?.Single(x=> x.AutorId == 4);
+
+                if (autorPerson != null)
                 {
-                    Console.WriteLine("No books found in the database.");
+                    autorPerson.Apellidos = "D.Silva";
+                    autorPerson.Grado = "Capa";
+                    var estadoTransaccion = db.SaveChanges();
+                    Console.WriteLine("Actualizacion exitosa: " + estadoTransaccion);
+                }
                 }
             }
         }
