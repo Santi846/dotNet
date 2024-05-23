@@ -94,14 +94,25 @@ namespace LeerData
 
                 // Update data for an entity instance
 
-                var autorPerson = db.Autor?.Single(x=> x.AutorId == 4);
+                // var autorPerson = db.Autor?.Single(x=> x.AutorId == 4);
+
+                // if (autorPerson != null)
+                // {
+                //     autorPerson.Apellidos = "D.Silva";
+                //     autorPerson.Grado = "Capa";
+                //     var estadoTransaccion = db.SaveChanges();
+                //     Console.WriteLine("Actualizacion exitosa: " + estadoTransaccion);
+                // }
+
+                // Delete an entity instance
+
+                var autorPerson = db.Autor?.Single(x=> x.AutorId == 6);
 
                 if (autorPerson != null)
-                {
-                    autorPerson.Apellidos = "D.Silva";
-                    autorPerson.Grado = "Capa";
+                {   
+                    db.Remove(autorPerson);
                     var estadoTransaccion = db.SaveChanges();
-                    Console.WriteLine("Actualizacion exitosa: " + estadoTransaccion);
+                    Console.WriteLine("Eliminacion exitosa: " + estadoTransaccion);
                 }
                 }
             }
